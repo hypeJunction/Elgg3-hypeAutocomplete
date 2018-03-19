@@ -1,0 +1,29 @@
+{
+	"name": "hypejunction/hypeautocomplete",
+	"type": "elgg-plugin",
+	"description": "Autocomplete input",
+	"homepage": "http://hypejunction.com",
+	"keywords": [
+		"elgg", "plugin", "autocomplete", "forms"
+	],
+	"license": "GPL-2.0",
+	"authors": [
+		{
+			"name": "Ismayil Khayredinov",
+			"email": "info@hypejunction.com"
+		}
+	],
+	"extra": {
+		"installer-name": "hypeAutocomplete"
+	},
+	"require": {
+		"php": ">=7.0",
+		"composer/installers": "~1.0",
+		"bower-asset/select2": "^4.0"
+	},
+	"autoload": {
+		"psr-0": {
+			"": "classes/"
+		}
+	}
+}
