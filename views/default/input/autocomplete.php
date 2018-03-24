@@ -93,12 +93,13 @@ $vars['value'] = [];
 $vars['options_values'] = [];
 
 foreach ($values as $attr) {
+
 	if (is_numeric($attr)) {
 		$entity = get_entity($attr);
-	} else {
-		$entity = get_user_by_username($attr);
 	} else if ($attr instanceof ElggEntity) {
 		$entity = $attr;
+	} else {
+		$entity = get_user_by_username($attr);
 	}
 
 	if ($entity) {
