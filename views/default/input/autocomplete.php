@@ -97,6 +97,8 @@ foreach ($values as $attr) {
 		$entity = get_entity($attr);
 	} else {
 		$entity = get_user_by_username($attr);
+	} else if ($attr instanceof ElggEntity) {
+		$entity = $attr;
 	}
 
 	if ($entity) {
