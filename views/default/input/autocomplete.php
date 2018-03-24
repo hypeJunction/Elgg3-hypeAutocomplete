@@ -115,4 +115,12 @@ $vars['config']['containerCssClass'] = 'elgg-autocomplete-entities';
 $vars['config']['minimumInputLength'] = 2;
 $vars['config']['width'] = '100%';
 
+$multiple = elgg_extract('multiple', $vars, false);
+if ($multiple) {
+	$limit = (int) elgg_extract('limit', $vars, 0);
+	$vars['config']['maximumSelectionLength'] = $limit;
+} else {
+	$vars['config']['maximumSelectionLength'] = 1;
+}
+
 echo elgg_view('input/select', $vars);
