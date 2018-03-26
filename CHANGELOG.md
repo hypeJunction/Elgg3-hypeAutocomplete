@@ -1,3 +1,15 @@
+<a name="1.0.2"></a>
+## [1.0.2](https://github.com/hypeJunctionPro/Elgg3-hypeAutocomplete/compare/1.0.1...1.0.2) (2018-03-26)
+
+
+### Bug Fixes
+
+* **input:** correctly populate initial autocomplete values ([c117ccf](https://github.com/hypeJunctionPro/Elgg3-hypeAutocomplete/commit/c117ccf))
+* **input:** handle entities as values in autocomplete input ([2c0156a](https://github.com/hypeJunctionPro/Elgg3-hypeAutocomplete/commit/2c0156a))
+* **input:** handle entities as values in autocomplete input ([9e49253](https://github.com/hypeJunctionPro/Elgg3-hypeAutocomplete/commit/9e49253))
+
+
+
 <a name="1.0.1"></a>
 ## [1.0.1](https://github.com/hypeJunctionPro/Elgg3-hypeAutocomplete/compare/1.0.0...1.0.1) (2018-03-24)
 
