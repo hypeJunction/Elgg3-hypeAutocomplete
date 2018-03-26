@@ -105,9 +105,9 @@ foreach ($values as $attr) {
 	if ($entity) {
 		$vars['value'][] = $entity instanceof ElggUser ? $entity->username : $entity->guid;
 		$vars['options_values'][] = [
-			'value' => $entity instanceof ElggUser ? $entity->username : $entity->guid,
+			'value' => $match_on == 'users' ? $entity->username : $entity->guid,
 			'text' => $entity->getDisplayName(),
-			'data-icon-url' => $entity->getIconURL(['size' => 'small']),
+			'data-icon-url' => $entity->hasIcon('small') ? $entity->getIconURL(['size' => 'small']) : '',
 			'selected' => true,
 		];
 	}
