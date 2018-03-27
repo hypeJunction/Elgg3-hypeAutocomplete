@@ -1,3 +1,13 @@
+<a name="1.0.3"></a>
+## [1.0.3](https://github.com/hypeJunctionPro/Elgg3-hypeAutocomplete/compare/1.0.2...1.0.3) (2018-03-27)
+
+
+### Bug Fixes
+
+* **styles:** add some padding to input fields ([7be2f5c](https://github.com/hypeJunctionPro/Elgg3-hypeAutocomplete/commit/7be2f5c))
+
+
+
 <a name="1.0.2"></a>
 ## [1.0.2](https://github.com/hypeJunctionPro/Elgg3-hypeAutocomplete/compare/1.0.1...1.0.2) (2018-03-26)
 
