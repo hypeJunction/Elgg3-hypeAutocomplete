@@ -20,7 +20,7 @@
 
 .select2-container .select2-selection--single .select2-selection__rendered {
 	display: block;
-	padding-left: 0.75rem;
+	padding-left: 0.6rem;
 	padding-right: 1.5rem;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -62,7 +62,8 @@
 	box-sizing: border-box;
 	border: none;
 	font-size: 100%;
-	margin-top: 0.5rem;
+	margin-top: 0.6rem;
+	margin-left: 0.3rem;
 	padding: 0;
 }
 
