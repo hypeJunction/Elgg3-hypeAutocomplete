@@ -47,7 +47,10 @@ $tags = elgg_get_tags([
 $value = elgg_extract('value', $vars, '');
 $vars['value'] = string_to_tag_array($value);
 $vars['options'] = $vars['value'];
-$vars['placeholder'] = elgg_echo('autocomplete:tags:placeholder');
+
+if (!isset($vars['placeholder'])) {
+	$vars['placeholder'] = elgg_echo('autocomplete:tags:placeholder');
+}
 
 $vars['multiple'] = true;
 
