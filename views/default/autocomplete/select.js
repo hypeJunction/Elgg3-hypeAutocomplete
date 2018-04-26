@@ -6,7 +6,7 @@ define(function (require) {
 		require('select2');
 
 		var autocomplete = {
-			format: function (state) {
+			format: function(state, text) {
 				var $elem = $(state.element);
 
 				var img = state.iconUrl || $elem.data('iconUrl');
@@ -14,15 +14,25 @@ define(function (require) {
 
 				var tmpl;
 
+				text = text || state.text;
+
 				if (img) {
-					tmpl = $('<span><span class="select-img"><img src="' + img + '"/></span><span class="select-label">' + state.text + '</span></span>');
+					tmpl = $('<span><span class="select-img"><img src="' + img + '"/></span><span class="select-label">' + text + '</span></span>');
 				} else if (icon) {
-					tmpl = $('<span><i class="select-icon elgg-icon fa fa-' + icon + '"></i><span class="select-label">' + state.text + '</span></span>');
+					tmpl = $('<span><i class="select-icon elgg-icon fa fa-' + icon + '"></i><span class="select-label">' + text + '</span></span>');
 				} else {
-					tmpl = $('<span class="select-label">' + state.text + '</span>');
+					tmpl = $('<span class="select-label">' + text + '</span>');
 				}
 
 				return tmpl;
+			},
+			formatSelection: function (state) {
+				var text = state.selection || state.text;
+				return autocomplete.format(state, text);
+			},
+			formatResult: function (state) {
+				var text = state.result || state.text;
+				return autocomplete.format(state.text);
 			},
 			init: function () {
 				$('.elgg-input-select:not(.select2-hidden-accessible):not(.elgg-no-js)').each(function () {
@@ -79,8 +89,8 @@ define(function (require) {
 			},
 			getDefaults: function () {
 				return {
-					templateResult: autocomplete.format,
-					templateSelection: autocomplete.format,
+					templateResult: autocomplete.formatResult,
+					templateSelection: autocomplete.formatSelection,
 					language: function () {
 						return {
 							errorLoading: function () {
@@ -108,8 +118,8 @@ define(function (require) {
 					}
 				};
 			}
-	};
+		};
 
 		return autocomplete;
-}
+	}
 );
