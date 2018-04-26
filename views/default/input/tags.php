@@ -59,11 +59,15 @@ unset($vars['source']);
 
 $vars['data-source'] = $source;
 
+$defaults = [
+	'tags' => true,
+	'containerCssClass' => 'elgg-autocomplete-tags',
+	'tokenSeparators' => [',', ';'],
+	'minimumInputLength' => 2,
+	'width' => '100%',
+];
+
 $vars['config'] = (array) elgg_extract('config', $vars, []);
-$vars['config']['tags'] = true;
-$vars['config']['containerCssClass'] = 'elgg-autocomplete-tags';
-$vars['config']['tokenSeparators'] = [',', ';'];
-$vars['config']['minimumInputLength'] = 2;
-$vars['config']['width'] = '100%';
+$vars['config'] = array_merge($defaults, $vars['config']);
 
 echo elgg_view('input/select', $vars);
