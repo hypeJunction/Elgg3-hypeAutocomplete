@@ -1,3 +1,14 @@
+<a name="1.0.5"></a>
+## [1.0.5](https://github.com/hypeJunctionPro/Elgg3-hypeAutocomplete/compare/1.0.4...1.0.5) (2018-04-26)
+
+
+### Bug Fixes
+
+* **js:** make a distinction between result and selection formatting ([a9d5899](https://github.com/hypeJunctionPro/Elgg3-hypeAutocomplete/commit/a9d5899))
+* **tags:** use placeholder passed with variables ([5675d40](https://github.com/hypeJunctionPro/Elgg3-hypeAutocomplete/commit/5675d40))
+
+
+
 <a name="1.0.4"></a>
 ## [1.0.4](https://github.com/hypeJunctionPro/Elgg3-hypeAutocomplete/compare/1.0.3...1.0.4) (2018-04-03)
 
