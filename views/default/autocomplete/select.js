@@ -32,7 +32,7 @@ define(function (require) {
 			},
 			formatResult: function (state) {
 				var text = state.result || state.text;
-				return autocomplete.format(state.text);
+				return autocomplete.format(state, text);
 			},
 			init: function () {
 				$('.elgg-input-select:not(.select2-hidden-accessible):not(.elgg-no-js)').each(function () {
