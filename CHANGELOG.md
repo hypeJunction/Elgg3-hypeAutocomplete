@@ -1,3 +1,14 @@
+<a name="1.0.6"></a>
+## [1.0.6](https://github.com/hypeJunctionPro/Elgg3-hypeAutocomplete/compare/1.0.5...1.0.6) (2018-04-26)
+
+
+### Bug Fixes
+
+* **js:** correctly format tokens ([8cd74eb](https://github.com/hypeJunctionPro/Elgg3-hypeAutocomplete/commit/8cd74eb))
+* **tags:** allow config values to be defined with vars ([ad32a54](https://github.com/hypeJunctionPro/Elgg3-hypeAutocomplete/commit/ad32a54))
+
+
+
 <a name="1.0.5"></a>
 ## [1.0.5](https://github.com/hypeJunctionPro/Elgg3-hypeAutocomplete/compare/1.0.4...1.0.5) (2018-04-26)
 
