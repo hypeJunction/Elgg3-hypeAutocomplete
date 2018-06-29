@@ -1,3 +1,27 @@
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/hypeJunctionPro/Elgg3-hypeAutocomplete/compare/1.0.0...1.1.0) (2018-06-29)
+
+
+### Bug Fixes
+
+* **css:** make inputs more responsive ([d4cb21e](https://github.com/hypeJunctionPro/Elgg3-hypeAutocomplete/commit/d4cb21e))
+* **input:** autocomplete input now handles multiple flag correctly ([0c64bb1](https://github.com/hypeJunctionPro/Elgg3-hypeAutocomplete/commit/0c64bb1))
+* **input:** correctly populate initial autocomplete values ([c117ccf](https://github.com/hypeJunctionPro/Elgg3-hypeAutocomplete/commit/c117ccf))
+* **input:** handle entities as values in autocomplete input ([2c0156a](https://github.com/hypeJunctionPro/Elgg3-hypeAutocomplete/commit/2c0156a))
+* **input:** handle entities as values in autocomplete input ([9e49253](https://github.com/hypeJunctionPro/Elgg3-hypeAutocomplete/commit/9e49253))
+* **js:** correctly format tokens ([8cd74eb](https://github.com/hypeJunctionPro/Elgg3-hypeAutocomplete/commit/8cd74eb))
+* **js:** make a distinction between result and selection formatting ([a9d5899](https://github.com/hypeJunctionPro/Elgg3-hypeAutocomplete/commit/a9d5899))
+* **styles:** add some padding to input fields ([7be2f5c](https://github.com/hypeJunctionPro/Elgg3-hypeAutocomplete/commit/7be2f5c))
+* **tags:** allow config values to be defined with vars ([ad32a54](https://github.com/hypeJunctionPro/Elgg3-hypeAutocomplete/commit/ad32a54))
+* **tags:** use placeholder passed with variables ([5675d40](https://github.com/hypeJunctionPro/Elgg3-hypeAutocomplete/commit/5675d40))
+
+
+### Features
+
+* **core:** updates and fixes ([bbaf799](https://github.com/hypeJunctionPro/Elgg3-hypeAutocomplete/commit/bbaf799))
+
+
+
 <a name="1.0.6"></a>
 ## [1.0.6](https://github.com/hypeJunctionPro/Elgg3-hypeAutocomplete/compare/1.0.5...1.0.6) (2018-04-26)
 
