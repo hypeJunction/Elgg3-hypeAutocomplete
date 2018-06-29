@@ -38,10 +38,14 @@ $vars['config']['containerCssClass'] = 'elgg-autocomplete-guids';
 $vars['config']['minimumInputLength'] = 2;
 $vars['config']['width'] = '100%';
 
+$multiple = elgg_extract('multiple', $vars, true);
 $limit = (int) elgg_extract('limit', $vars, 0);
-if ($limit != 1) {
+if ($limit == 1) {
+	$vars['multiple'] = false;
+	$vars['config']['maximumSelectionLength'] = 1;
+} else {
 	$vars['multiple'] = true;
-	$vars['config']['maximumSelectionLength'] = $limit;
+	unset($vars['config']['maximumSelectionLength']);
 }
 
 $vars['class'] = elgg_extract_class($vars, 'elgg-input-guids');

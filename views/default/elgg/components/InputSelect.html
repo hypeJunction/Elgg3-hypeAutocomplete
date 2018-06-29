@@ -1,0 +1,41 @@
+<elgg-field :class="fieldClasses" :id="id" :required="required" :label="label" :help="help" :error="error">
+    <div slot="control" class="control" :class="controlClasses">
+        <div class="select" :class="inputClasses">
+            <slot name="input">
+                <select v-model="inputValue"
+                        :required="required"
+                        :name="name"
+                        :id="id"
+                        :multiple="multiple"
+                        class="elgg-input-select"
+                        ref="select"
+                >
+                    <template v-for="(option, index) in filteredOptions">
+                        <option
+                            :key="index"
+                            :value="option.value"
+                            :selected="option.selected"
+                            :disabled="option.disabled"
+                            :data-icon-url="option.iconUrl"
+                            :data-icon-name="option.iconName"
+                        >
+                            {{ option.label }}
+                        </option>
+                    </template>
+                </select>
+            </slot>
+            <elgg-icon
+                v-if="leftIcon"
+                :name="leftIcon"
+                :size="size"
+                position="left"
+            ></elgg-icon>
+            <elgg-icon
+                v-if="rightIcon"
+                :name="rightIcon"
+                :size="size"
+                position="right"
+            ></elgg-icon>
+        </div>
+    </div>
+</elgg-field>

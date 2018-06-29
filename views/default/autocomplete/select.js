@@ -38,19 +38,23 @@ define(function (require) {
 				$('.elgg-input-select:not(.select2-hidden-accessible):not(.elgg-no-js)').each(function () {
 
 					var $elem = $(this);
-					var opts = $elem.data('selectOpts') || {};
 
-					opts.ajax = autocomplete.prepareAjaxParams($elem);
-
-					opts = elgg.trigger_hook('options', 'select', {
-						$elem: $elem
-					}, opts);
-
-					$elem.select2($.extend({}, autocomplete.getDefaults(), opts));
+					autocomplete.bind($elem);
 				});
 			},
-			prepareAjaxParams: function($elem) {
-				var source = $elem.data('source');
+			bind: function($elem, opts) {
+				var opts = opts || $elem.data('selectOpts') || {};
+
+				opts.ajax = autocomplete.prepareAjaxParams($elem, opts);
+
+				opts = elgg.trigger_hook('options', 'select', {
+					$elem: $elem
+				}, opts);
+
+				return $elem.select2($.extend({}, autocomplete.getDefaults(), opts));
+			},
+			prepareAjaxParams: function($elem, opts) {
+				var source = opts.source || $elem.data('source');
 				if (!source) {
 					return null;
 				}
