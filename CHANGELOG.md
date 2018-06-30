@@ -1,3 +1,13 @@
+<a name="1.1.3"></a>
+## [1.1.3](https://github.com/hypeJunctionPro/Elgg3-hypeAutocomplete/compare/1.1.1...1.1.3) (2018-06-30)
+
+
+### Features
+
+* **select:** pass option element attributes to the select2 selection ([137a3a4](https://github.com/hypeJunctionPro/Elgg3-hypeAutocomplete/commit/137a3a4))
+
+
+
 <a name="1.1.2"></a>
 ## [1.1.2](https://github.com/hypeJunctionPro/Elgg3-hypeAutocomplete/compare/1.1.1...1.1.2) (2018-06-30)
 
