@@ -30,7 +30,17 @@ define(function (require) {
 				var text = state.selection || state.text;
 				return autocomplete.format(state, text);
 			},
-			formatResult: function (state) {
+			formatResult: function (state, container) {
+				if (state.element) {
+					$.each(state.element.attributes, function() {
+						if(this.specified) {
+							if (!$(container).attr(this.name)) {
+								$(container).attr(this.name, this.value);
+							}
+						}
+					});
+				}
+
 				var text = state.result || state.text;
 				return autocomplete.format(state, text);
 			},
