@@ -26,7 +26,15 @@ define(function (require) {
 
 				return tmpl;
 			},
-			formatSelection: function (state) {
+			formatSelection: function (state, container) {
+				if (state.element) {
+					$.each(state.element.attributes, function() {
+						if(this.specified) {
+							$(container).attr(this.name, this.value);
+						}
+					});
+				}
+
 				var text = state.selection || state.text;
 				return autocomplete.format(state, text);
 			},
@@ -34,9 +42,7 @@ define(function (require) {
 				if (state.element) {
 					$.each(state.element.attributes, function() {
 						if(this.specified) {
-							if (!$(container).attr(this.name)) {
-								$(container).attr(this.name, this.value);
-							}
+							$(container).attr(this.name, this.value);
 						}
 					});
 				}
