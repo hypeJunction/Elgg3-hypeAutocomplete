@@ -12,6 +12,8 @@ if (file_exists("$plugin_root/vendor/autoload.php")) {
 }
 
 return [
+	'bootstrap' => \hypeJunction\Autocomplete\Bootstrap::class,
+
 	'views' => [
 		'default' => [
 			'select2/' => "$path/vendor/bower-asset/select2/dist/",
