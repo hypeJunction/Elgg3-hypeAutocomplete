@@ -12,6 +12,11 @@ if (file_exists("$plugin_root/vendor/autoload.php")) {
 }
 
 return [
+	'plugin' => [
+		'name' => 'hypeAutocomplete',
+		'version' => '4.0.0',
+	],
+
 	'bootstrap' => \hypeJunction\Autocomplete\Bootstrap::class,
 
 	'views' => [
