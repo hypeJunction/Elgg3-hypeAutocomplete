@@ -8,6 +8,9 @@ use Elgg\EntityNotFoundException;
 use Elgg\Http\ResponseBuilder;
 use Elgg\Request;
 
+/**
+ * SearchTags class.
+ */
 class SearchTags {
 
 	/**

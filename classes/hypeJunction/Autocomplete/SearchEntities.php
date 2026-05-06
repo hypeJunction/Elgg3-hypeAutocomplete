@@ -10,6 +10,9 @@ use ElggEntity;
 use hypeJunction\Ajax\Context;
 use Psr\Log\LogLevel;
 
+/**
+ * SearchEntities class.
+ */
 class SearchEntities {
 
 	/**
@@ -38,6 +41,7 @@ class SearchEntities {
 			if (!$subtype) {
 				$subtype = get_registered_entity_types($type);
 			}
+
 			$options['subtypes'] = $subtype;
 		} else {
 			$options['type_subtype_pairs'] = [

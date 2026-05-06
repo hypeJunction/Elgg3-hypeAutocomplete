@@ -29,7 +29,7 @@ define(function (require) {
 			formatSelection: function (state, container) {
 				if (state.element) {
 					$.each(state.element.attributes, function() {
-						if(this.specified) {
+						if (this.specified) {
 							$(container).attr(this.name, this.value);
 						}
 					});
@@ -41,7 +41,7 @@ define(function (require) {
 			formatResult: function (state, container) {
 				if (state.element) {
 					$.each(state.element.attributes, function() {
-						if(this.specified) {
+						if (this.specified) {
 							$(container).attr(this.name, this.value);
 						}
 					});
@@ -97,6 +97,7 @@ define(function (require) {
 								if (!i.id) {
 									i.id = i.value;
 								}
+
 								if (!i.text) {
 									i.text = i.name || i.title || i.label;
 								}
@@ -138,8 +139,8 @@ define(function (require) {
 					}
 				};
 			}
-		};
+	};
 
 		return autocomplete;
-	}
+}
 );

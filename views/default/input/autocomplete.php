@@ -76,6 +76,7 @@ if (isset($vars['match_target'])) {
 	} else {
 		$target_guid = (int) $target;
 	}
+
 	$params['match_membership'] = $target;
 	unset($vars['match_membership']);
 }
@@ -93,7 +94,6 @@ $vars['value'] = [];
 $vars['options_values'] = [];
 
 foreach ($values as $attr) {
-
 	if (is_numeric($attr)) {
 		$entity = get_entity($attr);
 	} else if ($attr instanceof ElggEntity) {

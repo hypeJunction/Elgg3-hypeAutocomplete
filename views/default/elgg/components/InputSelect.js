@@ -45,6 +45,7 @@ define(function (require) {
 							iconName: null
 						};
 					}
+
 					return option;
 				});
 				if (this.placeholder) {

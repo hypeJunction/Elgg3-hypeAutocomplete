@@ -71,6 +71,7 @@ define(function (require) {
 							iconName: null
 						};
 					}
+
 					return option;
 				});
 				if (this.placeholder) {
@@ -133,6 +134,7 @@ define(function (require) {
 					if (typeof parts['query'] !== 'undefined') {
 						args = elgg.parse_str(parts['query']);
 					}
+
 					var split = source.split('?');
 					base = split[0] + '?';
 				}

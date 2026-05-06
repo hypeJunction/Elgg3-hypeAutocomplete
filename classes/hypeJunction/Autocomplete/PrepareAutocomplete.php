@@ -4,6 +4,9 @@ namespace hypeJunction\Autocomplete;
 
 use Elgg\Hook;
 
+/**
+ * PrepareAutocomplete class.
+ */
 class PrepareAutocomplete {
 
 	/**
@@ -29,7 +32,7 @@ class PrepareAutocomplete {
 
 		if (!isset($config['placeholder'])) {
 			$placeholder = elgg_extract('placeholder', $vars);
-			$config['placeholder'] = $placeholder ? : elgg_echo('autocomplete:select:placeholder');
+			$config['placeholder'] = $placeholder ?: elgg_echo('autocomplete:select:placeholder');
 		}
 
 		if (!isset($config['minimumResultsForSearch'])) {

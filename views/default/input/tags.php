@@ -36,7 +36,7 @@ if (is_array($vars['value'])) {
 		}
 	}
 
-	$vars['value'] = implode(", ", $tags);
+	$vars['value'] = implode(', ', $tags);
 }
 
 $tags = elgg_get_tags([

@@ -1,7 +1,7 @@
 <?php
 /**
  * User Picker.  Sends an array of user guids.
- **
+ * *
  * @uses $vars['values'] Array of user guids for already selected users or null
  * @uses $vars['limit'] Limit number of users (default 0 = no limit)
  * @uses $vars['name'] Name of the returned data array (default "members")
@@ -43,7 +43,7 @@ if (!empty($params)) {
 	$params['mac'] = $mac->getToken();
 }
 
-$handler = elgg_extract('handler', $vars, "livesearch/users");
+$handler = elgg_extract('handler', $vars, 'livesearch/users');
 $params['view'] = 'json'; // force json viewtype
 
 $vars['data-source'] = elgg_http_add_url_query_elements($handler, $params);

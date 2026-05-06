@@ -4,8 +4,14 @@ namespace hypeJunction\Autocomplete;
 
 use Elgg\DefaultPluginBootstrap;
 
+/**
+ * Bootstrap class.
+ */
 class Bootstrap extends DefaultPluginBootstrap {
 
+	/**
+	 * {@inheritdoc}
+	 */
 	public function init() {
 		elgg_extend_view('elements/forms.css', 'autocomplete/stylesheet.css');
 

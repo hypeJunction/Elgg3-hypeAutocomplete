@@ -4,6 +4,9 @@ namespace hypeJunction\Autocomplete;
 
 use Elgg\Hook;
 
+/**
+ * AddAccessIcons class.
+ */
 class AddAccessIcons {
 
 	/**
@@ -39,11 +42,11 @@ class AddAccessIcons {
 			}
 
 			switch ($value) {
-				case ACCESS_PUBLIC :
-				case ACCESS_LOGGED_IN :
+				case ACCESS_PUBLIC:
+				case ACCESS_LOGGED_IN:
 					$icon_name = 'globe';
 					break;
-				case ACCESS_PRIVATE :
+				case ACCESS_PRIVATE:
 					$icon_name = 'lock';
 					break;
 				default:
@@ -51,16 +54,15 @@ class AddAccessIcons {
 					$collection = get_access_collection($value);
 					if ($collection) {
 						switch ($collection->getSubtype()) {
-							case 'friends' :
+							case 'friends':
 								$icon_name = 'user';
 								break;
 
-							case 'group_acl' :
+							case 'group_acl':
 								$icon_name = 'users';
 								break;
 						}
 					}
-
 					break;
 			}
 
