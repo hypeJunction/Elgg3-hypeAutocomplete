@@ -2,8 +2,8 @@
 
 namespace hypeJunction\Autocomplete;
 
-use Elgg\BadRequestException;
 use Elgg\Database\QueryBuilder;
+use Elgg\Exceptions\Http\BadRequestException;
 use Elgg\Http\ResponseBuilder;
 use Elgg\Request;
 use ElggEntity;

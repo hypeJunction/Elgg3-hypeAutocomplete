@@ -2,9 +2,8 @@
 
 namespace hypeJunction\Autocomplete;
 
-use Elgg\BadRequestException;
 use Elgg\Database\QueryBuilder;
-use Elgg\EntityNotFoundException;
+use Elgg\Exceptions\Http\BadRequestException;
 use Elgg\Http\ResponseBuilder;
 use Elgg\Request;
 
@@ -34,7 +33,7 @@ class SearchTags {
 		$qb = \Elgg\Database\Select::fromTable('metadata', 'md');
 		$qb->select('md.value AS tag')
 			->addSelect('COUNT(md.id) AS total')
-			->where($qb->compare('md.name', 'IN', elgg_get_registered_tag_metadata_names(), ELGG_VALUE_STRING))
+			->where($qb->compare('md.name', 'IN', ['tags'], ELGG_VALUE_STRING))
 			->andWhere($qb->compare('md.value', 'LIKE', "%$query%", ELGG_VALUE_STRING))
 			->groupBy('md.value')
 			->orderBy('total', 'desc');

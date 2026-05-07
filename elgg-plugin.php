@@ -15,6 +15,11 @@ return [
 	'plugin' => [
 		'name' => 'hypeAutocomplete',
 		'version' => '4.0.0',
+		'dependencies' => [
+			'hypeajax' => [
+				'must_be_active' => true,
+			],
+		],
 	],
 
 	'bootstrap' => \hypeJunction\Autocomplete\Bootstrap::class,

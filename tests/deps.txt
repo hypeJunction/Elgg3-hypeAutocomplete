@@ -1,5 +1,0 @@
-# hypeautocomplete depends on hypeajax (see manifest.xml). hypeajax must
-# be migrated to 4.x and present in the workspace; its Bootstrap class
-# registers the ajax.data:page hook that autocomplete's UI glue relies
-# on at render time.
-hypeajax
