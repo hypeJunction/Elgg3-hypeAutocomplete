@@ -2,7 +2,7 @@
 
 namespace hypeJunction\Autocomplete;
 
-use Elgg\Hook;
+use Elgg\Event;
 
 /**
  * AddAccessIcons class.
@@ -18,9 +18,9 @@ class AddAccessIcons {
 	 *
 	 * @return array
 	 */
-	public function __invoke(Hook $hook) {
+	public function __invoke(Event $event) {
 
-		$vars = $hook->getValue();
+		$vars = $event->getValue();
 
 		$classes = elgg_extract_class($vars);
 		if (!in_array('elgg-input-access', $classes)) {
@@ -51,7 +51,7 @@ class AddAccessIcons {
 					break;
 				default:
 					$icon_name = 'cog';
-					$collection = get_access_collection($value);
+					$collection = elgg_get_access_collection($value);
 					if ($collection) {
 						switch ($collection->getSubtype()) {
 							case 'friends':

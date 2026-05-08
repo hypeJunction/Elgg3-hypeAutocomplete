@@ -79,7 +79,7 @@ class BootstrapTest extends IntegrationTestCase {
 	// --- Bootstrap::init hook wiring ---
 
 	public function testViewVarsInputSelectHookWired() {
-		$handlers = _elgg_services()->hooks->getAllHandlers();
+		$handlers = _elgg_services()->events->getAllHandlers();
 		$this->assertArrayHasKey('view_vars', $handlers);
 		$this->assertArrayHasKey('input/select', $handlers['view_vars']);
 	}

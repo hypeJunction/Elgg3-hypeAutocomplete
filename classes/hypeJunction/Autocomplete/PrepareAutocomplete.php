@@ -2,7 +2,7 @@
 
 namespace hypeJunction\Autocomplete;
 
-use Elgg\Hook;
+use Elgg\Event;
 
 /**
  * PrepareAutocomplete class.
@@ -18,9 +18,9 @@ class PrepareAutocomplete {
 	 *
 	 * @return array
 	 */
-	public function __invoke(Hook $hook) {
+	public function __invoke(Event $event) {
 
-		$vars = $hook->getValue();
+		$vars = $event->getValue();
 
 		if (elgg_extract('no_js', $vars)) {
 			$vars['class'] = elgg_extract_class($vars, 'elgg-no-js');

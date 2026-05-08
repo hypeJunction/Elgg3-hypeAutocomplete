@@ -2,7 +2,7 @@
 
 namespace hypeJunction\Autocomplete;
 
-use Elgg\Hook;
+use Elgg\Event;
 use Elgg\IntegrationTestCase;
 
 class PrepareAutocompleteTest extends IntegrationTestCase {
@@ -14,8 +14,8 @@ class PrepareAutocompleteTest extends IntegrationTestCase {
 	public function up(): void {}
 	public function down(): void {}
 
-	private function makeHook(array $vars): Hook {
-		$hook = $this->getMockBuilder(Hook::class)
+	private function makeHook(array $vars): Event {
+		$hook = $this->getMockBuilder(Event::class)
 			->disableOriginalConstructor()
 			->getMock();
 		$hook->method('getValue')->willReturn($vars);
