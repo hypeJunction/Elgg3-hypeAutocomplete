@@ -14,7 +14,7 @@ if (file_exists("$plugin_root/vendor/autoload.php")) {
 return [
 	'plugin' => [
 		'name' => 'hypeAutocomplete',
-		'version' => '5.0.0',
+		'version' => '6.0.0',
 		'dependencies' => [
 			'hypeajax' => [
 				'must_be_active' => true,

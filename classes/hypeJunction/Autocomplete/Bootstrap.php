@@ -15,10 +15,7 @@ class Bootstrap extends DefaultPluginBootstrap {
 	public function init(): void {
 		elgg_extend_view('elements/forms.css', 'autocomplete/stylesheet.css');
 
-		elgg_define_js('select2', [
-			'src' => elgg_get_simplecache_url('select2/js/select2.full.min.js'),
-			'deps' => ['jquery'],
-		]);
+		elgg_register_esm('select2', elgg_get_simplecache_url('select2/js/select2.full.min.js'));
 
 		elgg_extend_view('input/select', 'autocomplete/select');
 
