@@ -1,146 +1,144 @@
-define(function (require) {
+import elgg from 'elgg';
+import Ajax from 'elgg/Ajax';
+import $ from 'jquery';
+import i18n from 'elgg/i18n';
+import { trigger } from 'elgg/events';
+import 'select2';
 
-		var elgg = require('elgg');
-		var Ajax = require('elgg/Ajax');
-		var $ = require('jquery');
-		require('select2');
+var autocomplete = {
+	format: function(state, text) {
+		var $elem = $(state.element);
 
-		var autocomplete = {
-			format: function(state, text) {
-				var $elem = $(state.element);
+		var img = state.iconUrl || $elem.data('iconUrl');
+		var icon = state.iconName || $elem.data('iconName');
 
-				var img = state.iconUrl || $elem.data('iconUrl');
-				var icon = state.iconName || $elem.data('iconName');
+		var tmpl;
 
-				var tmpl;
+		text = text || state.text;
 
-				text = text || state.text;
+		if (img) {
+			tmpl = $('<span><span class="select-img"><img src="' + img + '"/></span><span class="select-label">' + text + '</span></span>');
+		} else if (icon) {
+			tmpl = $('<span><i class="select-icon elgg-icon fa fa-' + icon + '"></i><span class="select-label">' + text + '</span></span>');
+		} else {
+			tmpl = $('<span class="select-label">' + text + '</span>');
+		}
 
-				if (img) {
-					tmpl = $('<span><span class="select-img"><img src="' + img + '"/></span><span class="select-label">' + text + '</span></span>');
-				} else if (icon) {
-					tmpl = $('<span><i class="select-icon elgg-icon fa fa-' + icon + '"></i><span class="select-label">' + text + '</span></span>');
-				} else {
-					tmpl = $('<span class="select-label">' + text + '</span>');
+		return tmpl;
+	},
+	formatSelection: function (state, container) {
+		if (state.element) {
+			$.each(state.element.attributes, function() {
+				if (this.specified) {
+					$(container).attr(this.name, this.value);
 				}
+			});
+		}
 
-				return tmpl;
-			},
-			formatSelection: function (state, container) {
-				if (state.element) {
-					$.each(state.element.attributes, function() {
-						if (this.specified) {
-							$(container).attr(this.name, this.value);
-						}
-					});
+		var text = state.selection || state.text;
+		return autocomplete.format(state, text);
+	},
+	formatResult: function (state, container) {
+		if (state.element) {
+			$.each(state.element.attributes, function() {
+				if (this.specified) {
+					$(container).attr(this.name, this.value);
 				}
+			});
+		}
 
-				var text = state.selection || state.text;
-				return autocomplete.format(state, text);
-			},
-			formatResult: function (state, container) {
-				if (state.element) {
-					$.each(state.element.attributes, function() {
-						if (this.specified) {
-							$(container).attr(this.name, this.value);
-						}
-					});
-				}
+		var text = state.result || state.text;
+		return autocomplete.format(state, text);
+	},
+	init: function () {
+		$('.elgg-input-select:not(.select2-hidden-accessible):not(.elgg-no-js)').each(function () {
 
-				var text = state.result || state.text;
-				return autocomplete.format(state, text);
-			},
-			init: function () {
-				$('.elgg-input-select:not(.select2-hidden-accessible):not(.elgg-no-js)').each(function () {
+			var $elem = $(this);
 
-					var $elem = $(this);
+			autocomplete.bind($elem);
+		});
+	},
+	bind: function($elem, opts) {
+		var opts = opts || $elem.data('selectOpts') || {};
 
-					autocomplete.bind($elem);
-				});
-			},
-			bind: function($elem, opts) {
-				var opts = opts || $elem.data('selectOpts') || {};
+		opts.ajax = autocomplete.prepareAjaxParams($elem, opts);
 
-				opts.ajax = autocomplete.prepareAjaxParams($elem, opts);
+		opts = trigger('options', 'select', {
+			$elem: $elem
+		}, opts);
 
-				opts = elgg.trigger_hook('options', 'select', {
-					$elem: $elem
-				}, opts);
+		return $elem.select2($.extend({}, autocomplete.getDefaults(), opts));
+	},
+	prepareAjaxParams: function($elem, opts) {
+		var source = opts.source || $elem.data('source');
+		if (!source) {
+			return null;
+		}
 
-				return $elem.select2($.extend({}, autocomplete.getDefaults(), opts));
-			},
-			prepareAjaxParams: function($elem, opts) {
-				var source = opts.source || $elem.data('source');
-				if (!source) {
-					return null;
-				}
-
+		return {
+			url: source,
+			delay: 250,
+			dataType: 'json',
+			data: function(params) {
 				return {
-					url: source,
-					delay: 250,
-					dataType: 'json',
-					data: function(params) {
-						return {
-							q: params.term,
-							format: 'select2',
-							prop: $elem.data('prop') || 'guid',
-							value: $elem.val()
-						};
-					},
-					transport: function (params, success, failure) {
-						var ajax = new Ajax(false);
-						return ajax.path(params.url, params).done(success).fail(failure);
-					},
-					processResults: function (data) {
-						return {
-							results: data.map(function(i) {
-								if (!i.id) {
-									i.id = i.value;
-								}
-
-								if (!i.text) {
-									i.text = i.name || i.title || i.label;
-								}
-
-								return i;
-							})
-						};
-					}
+					q: params.term,
+					format: 'select2',
+					prop: $elem.data('prop') || 'guid',
+					value: $elem.val()
 				};
 			},
-			getDefaults: function () {
+			transport: function (params, success, failure) {
+				var ajax = new Ajax(false);
+				return ajax.path(params.url, params).done(success).fail(failure);
+			},
+			processResults: function (data) {
 				return {
-					templateResult: autocomplete.formatResult,
-					templateSelection: autocomplete.formatSelection,
-					language: function () {
-						return {
-							errorLoading: function () {
-								return elgg.echo('autocomplete:errorLoad');
-							},
-							inputTooLong: function (e) {
-								return elgg.echo('autocomplete:inputTooLong', [e.maximum]);
-							},
-							inputTooShort: function (e) {
-								return elgg.echo('autocomplete:inputTooShort', [e.minimum]);
-							},
-							loadingMore: function () {
-								return elgg.echo('autocomplete:loadingMore');
-							},
-							maximumSelected: function (e) {
-								return elgg.echo('autocomplete:maximumSelected', [e.maximum]);
-							},
-							noResults: function () {
-								return elgg.echo('autocomplete:noResults');
-							},
-							searching: function () {
-								return elgg.echo('autocomplete:searching');
-							}
-						};
+					results: data.map(function(i) {
+						if (!i.id) {
+							i.id = i.value;
+						}
+
+						if (!i.text) {
+							i.text = i.name || i.title || i.label;
+						}
+
+						return i;
+					})
+				};
+			}
+		};
+	},
+	getDefaults: function () {
+		return {
+			templateResult: autocomplete.formatResult,
+			templateSelection: autocomplete.formatSelection,
+			language: function () {
+				return {
+					errorLoading: function () {
+						return i18n.echo('autocomplete:errorLoad');
+					},
+					inputTooLong: function (e) {
+						return i18n.echo('autocomplete:inputTooLong', [e.maximum]);
+					},
+					inputTooShort: function (e) {
+						return i18n.echo('autocomplete:inputTooShort', [e.minimum]);
+					},
+					loadingMore: function () {
+						return i18n.echo('autocomplete:loadingMore');
+					},
+					maximumSelected: function (e) {
+						return i18n.echo('autocomplete:maximumSelected', [e.maximum]);
+					},
+					noResults: function () {
+						return i18n.echo('autocomplete:noResults');
+					},
+					searching: function () {
+						return i18n.echo('autocomplete:searching');
 					}
 				};
 			}
-	};
+		};
+	}
+};
 
-		return autocomplete;
-}
-);
+export default autocomplete;
