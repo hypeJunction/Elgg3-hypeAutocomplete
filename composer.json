@@ -17,7 +17,7 @@
         }
     ],
     "extra": {
-        "installer-name": "hypeAutocomplete",
+        "installer-name": "hypeautocomplete",
         "elgg-plugin": {
             "id": "hypeautocomplete"
         }
@@ -38,5 +38,6 @@
         "allow-plugins": {
             "composer/installers": true
         }
-    }
+    },
+    "version": "4.0.0"
 }
