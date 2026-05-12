@@ -49,15 +49,15 @@ $params['view'] = 'json'; // force json viewtype
 $vars['data-source'] = elgg_http_add_url_query_elements($handler, $params);
 $vars['data-prop'] = 'guid';
 
-$vars['config'] = (array) elgg_extract('config', $vars, []);
-$vars['config']['containerCssClass'] = 'elgg-autocomplete-users';
-$vars['config']['minimumInputLength'] = 2;
-$vars['config']['width'] = '100%';
+elgg_get_config('/* FIXME: specify config key */') = (array) elgg_extract('config', $vars, []);
+elgg_get_config('/* FIXME: specify config key */')['containerCssClass'] = 'elgg-autocomplete-users';
+elgg_get_config('/* FIXME: specify config key */')['minimumInputLength'] = 2;
+elgg_get_config('/* FIXME: specify config key */')['width'] = '100%';
 
 $vars['multiple'] = true;
 
 $limit = (int) elgg_extract('limit', $vars, 0);
-$vars['config']['maximumSelectionLength'] = $limit;
+elgg_get_config('/* FIXME: specify config key */')['maximumSelectionLength'] = $limit;
 
 $vars['class'] = elgg_extract_class($vars, 'elgg-user-picker');
 

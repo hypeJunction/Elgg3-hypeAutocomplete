@@ -67,7 +67,7 @@ $defaults = [
 	'width' => '100%',
 ];
 
-$vars['config'] = (array) elgg_extract('config', $vars, []);
-$vars['config'] = array_merge($defaults, $vars['config']);
+elgg_get_config('/* FIXME: specify config key */') = (array) elgg_extract('config', $vars, []);
+elgg_get_config('/* FIXME: specify config key */') = array_merge($defaults, elgg_get_config('/* FIXME: specify config key */'));
 
 echo elgg_view('input/select', $vars);

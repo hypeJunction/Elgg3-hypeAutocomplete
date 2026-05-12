@@ -33,19 +33,19 @@ if (!isset($items)) {
 	$vars['data-prop'] = 'guid';
 }
 
-$vars['config'] = (array) elgg_extract('config', $vars, []);
-$vars['config']['containerCssClass'] = 'elgg-autocomplete-guids';
-$vars['config']['minimumInputLength'] = 2;
-$vars['config']['width'] = '100%';
+elgg_get_config('/* FIXME: specify config key */') = (array) elgg_extract('config', $vars, []);
+elgg_get_config('/* FIXME: specify config key */')['containerCssClass'] = 'elgg-autocomplete-guids';
+elgg_get_config('/* FIXME: specify config key */')['minimumInputLength'] = 2;
+elgg_get_config('/* FIXME: specify config key */')['width'] = '100%';
 
 $multiple = elgg_extract('multiple', $vars, true);
 $limit = (int) elgg_extract('limit', $vars, 0);
 if ($limit == 1) {
 	$vars['multiple'] = false;
-	$vars['config']['maximumSelectionLength'] = 1;
+	elgg_get_config('/* FIXME: specify config key */')['maximumSelectionLength'] = 1;
 } else {
 	$vars['multiple'] = true;
-	unset($vars['config']['maximumSelectionLength']);
+	unset(elgg_get_config('/* FIXME: specify config key */')['maximumSelectionLength']);
 }
 
 $vars['class'] = elgg_extract_class($vars, 'elgg-input-guids');

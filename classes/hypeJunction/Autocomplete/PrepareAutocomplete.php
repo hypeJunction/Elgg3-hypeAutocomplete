@@ -25,7 +25,7 @@ class PrepareAutocomplete {
 		}
 
 		$config = (array) elgg_extract('config', $vars, []);
-		unset($vars['config']);
+		unset(elgg_get_config('/* FIXME: specify config key */'));
 
 		if (!isset($config['placeholder'])) {
 			$placeholder = elgg_extract('placeholder', $vars);

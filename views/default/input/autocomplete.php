@@ -42,12 +42,12 @@ if (!empty($params)) {
 
 $match_on = elgg_extract('match_on', $vars);
 if (empty($match_on) || is_array($match_on)) {
-	elgg_log('"input/autocomplete" must specify a single "match_on" parameter');
+	elgg()->logger->notice('"input/autocomplete" must specify a single "match_on" parameter');
 	return;
 }
 
 if ($match_on == 'all') {
-	elgg_log('"input/autocomplete" no longer supports matching on "all" entities');
+	elgg()->logger->notice('"input/autocomplete" no longer supports matching on "all" entities');
 	return;
 }
 
@@ -113,17 +113,17 @@ foreach ($values as $attr) {
 	}
 }
 
-$vars['config'] = (array) elgg_extract('config', $vars, []);
-$vars['config']['containerCssClass'] = 'elgg-autocomplete-entities';
-$vars['config']['minimumInputLength'] = 2;
-$vars['config']['width'] = '100%';
+elgg_get_config('/* FIXME: specify config key */') = (array) elgg_extract('config', $vars, []);
+elgg_get_config('/* FIXME: specify config key */')['containerCssClass'] = 'elgg-autocomplete-entities';
+elgg_get_config('/* FIXME: specify config key */')['minimumInputLength'] = 2;
+elgg_get_config('/* FIXME: specify config key */')['width'] = '100%';
 
 $multiple = elgg_extract('multiple', $vars, false);
 if ($multiple) {
 	$limit = (int) elgg_extract('limit', $vars, 0);
-	$vars['config']['maximumSelectionLength'] = $limit;
+	elgg_get_config('/* FIXME: specify config key */')['maximumSelectionLength'] = $limit;
 } else {
-	$vars['config']['maximumSelectionLength'] = 1;
+	elgg_get_config('/* FIXME: specify config key */')['maximumSelectionLength'] = 1;
 }
 
 echo elgg_view('input/select', $vars);
