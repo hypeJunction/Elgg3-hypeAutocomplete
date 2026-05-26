@@ -28,7 +28,7 @@ class SearchTags {
 			throw new BadRequestException();
 		}
 
-		elgg_set_http_header('Content-Type: application/json');
+		\elgg_set_http_header('Content-Type: application/json');
 
 		$qb = \Elgg\Database\Select::fromTable('metadata', 'md');
 		$qb->select('md.value AS tag')
@@ -41,7 +41,7 @@ class SearchTags {
 		$tags = $request->elgg()->db->getData($qb);
 
 		if (empty($tags)) {
-			return elgg_ok_response(json_encode([]));
+			return \elgg_ok_response(json_encode([]));
 		}
 
 		$data = array_map(function($e) {
@@ -51,6 +51,6 @@ class SearchTags {
 			];
 		}, $tags);
 
-		return elgg_ok_response(json_encode($data));
+		return \elgg_ok_response(json_encode($data));
 	}
 }

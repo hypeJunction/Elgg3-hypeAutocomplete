@@ -31,7 +31,7 @@ class SearchTagsTest extends IntegrationTestCase {
 			->getMock();
 		$request->method('getParam')
 			->willReturnCallback(fn($k) => $k === 'q' ? 'definitely-not-a-tag-' . uniqid() : null);
-		$request->method('elgg')->willReturn(_elgg_services());
+		$request->method('elgg')->willReturn(\_elgg_services());
 
 		$response = (new SearchTags())($request);
 
@@ -53,7 +53,7 @@ class SearchTagsTest extends IntegrationTestCase {
 			->getMock();
 		$request->method('getParam')
 			->willReturnCallback(fn($k) => $k === 'q' ? $tag : null);
-		$request->method('elgg')->willReturn(_elgg_services());
+		$request->method('elgg')->willReturn(\_elgg_services());
 
 		try {
 			$response = (new SearchTags())($request);

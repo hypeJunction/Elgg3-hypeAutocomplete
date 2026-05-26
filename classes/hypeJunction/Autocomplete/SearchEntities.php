@@ -25,10 +25,10 @@ class SearchEntities {
 	 */
 	public function __invoke(Request $request) {
 
-		if (elgg_is_xhr()) {
+		if (\elgg_is_xhr()) {
 			Context::restore($request);
 		} else {
-			elgg_signed_request_gatekeeper();
+			\elgg_signed_request_gatekeeper();
 		}
 
 		$options['limit'] = 100;
@@ -95,10 +95,10 @@ class SearchEntities {
 			};
 		}
 
-		$entities = elgg_get_entities($options);
+		$entities = \elgg_get_entities($options);
 
 		if (empty($entities)) {
-			return elgg_ok_response(json_encode([]));
+			return \elgg_ok_response(json_encode([]));
 		}
 
 		$data = array_map(function(ElggEntity $e) {
@@ -109,6 +109,6 @@ class SearchEntities {
 			];
 		}, $entities);
 
-		return elgg_ok_response(json_encode($data));
+		return \elgg_ok_response(json_encode($data));
 	}
 }
