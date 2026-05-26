@@ -22,17 +22,17 @@ class AddAccessIcons {
 
 		$vars = $event->getValue();
 
-		$classes = elgg_extract_class($vars);
+		$classes = \elgg_extract_class($vars);
 		if (!in_array('elgg-input-access', $classes)) {
 			return $vars;
 		}
 
-		$options = elgg_extract('options_values', $vars);
+		$options = \elgg_extract('options_values', $vars);
 		$vars['options_values'] = [];
 
 		foreach ($options as $value => $option) {
 			if (is_array($option)) {
-				$value = elgg_extract('value', $vars);
+				$value = \elgg_extract('value', $vars);
 			} else {
 				$option = [
 					'text' => $option,
@@ -51,7 +51,7 @@ class AddAccessIcons {
 					break;
 				default:
 					$icon_name = 'cog';
-					$collection = elgg_get_access_collection($value);
+					$collection = \elgg_get_access_collection($value);
 					if ($collection) {
 						switch ($collection->getSubtype()) {
 							case 'friends':
