@@ -22,15 +22,15 @@ class BootstrapTest extends IntegrationTestCase {
 	// --- plugin lifecycle ---
 
 	public function testPluginIsRegistered() {
-		$this->assertInstanceOf(\ElggPlugin::class, elgg_get_plugin_from_id('hypeautocomplete'));
+		$this->assertInstanceOf(\ElggPlugin::class, \elgg_get_plugin_from_id('hypeautocomplete'));
 	}
 
 	public function testPluginIsActive() {
-		$this->assertTrue(elgg_get_plugin_from_id('hypeautocomplete')->isActive());
+		$this->assertTrue(\elgg_get_plugin_from_id('hypeautocomplete')->isActive());
 	}
 
 	public function testHypeajaxDepIsActive() {
-		$p = elgg_get_plugin_from_id('hypeajax');
+		$p = \elgg_get_plugin_from_id('hypeajax');
 		$this->assertNotNull($p);
 		$this->assertTrue($p->isActive());
 	}
@@ -38,12 +38,12 @@ class BootstrapTest extends IntegrationTestCase {
 	// --- migration invariants ---
 
 	public function testNoStartPhpPresent() {
-		$pluginPath = elgg_get_plugin_from_id('hypeautocomplete')->getPath();
+		$pluginPath = \elgg_get_plugin_from_id('hypeautocomplete')->getPath();
 		$this->assertFileDoesNotExist($pluginPath . 'start.php');
 	}
 
 	public function testBootstrapRegisteredInPluginManifest() {
-		$plugin = elgg_get_plugin_from_id('hypeautocomplete');
+		$plugin = \elgg_get_plugin_from_id('hypeautocomplete');
 		$data = include $plugin->getPath() . 'elgg-plugin.php';
 		$this->assertArrayHasKey('bootstrap', $data);
 		$this->assertSame(Bootstrap::class, $data['bootstrap']);
@@ -79,7 +79,7 @@ class BootstrapTest extends IntegrationTestCase {
 	// --- Bootstrap::init hook wiring ---
 
 	public function testViewVarsInputSelectHookWired() {
-		$handlers = _elgg_services()->hooks->getAllHandlers();
+		$handlers = \_elgg_services()->hooks->getAllHandlers();
 		$this->assertArrayHasKey('view_vars', $handlers);
 		$this->assertArrayHasKey('input/select', $handlers['view_vars']);
 	}

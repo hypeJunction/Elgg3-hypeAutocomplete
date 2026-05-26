@@ -22,17 +22,17 @@ class PrepareAutocomplete {
 
 		$vars = $hook->getValue();
 
-		if (elgg_extract('no_js', $vars)) {
-			$vars['class'] = elgg_extract_class($vars, 'elgg-no-js');
+		if (\elgg_extract('no_js', $vars)) {
+			$vars['class'] = \elgg_extract_class($vars, 'elgg-no-js');
 			return $vars;
 		}
 
-		$config = (array) elgg_extract('config', $vars, []);
+		$config = (array) \elgg_extract('config', $vars, []);
 		unset($vars['config']);
 
 		if (!isset($config['placeholder'])) {
-			$placeholder = elgg_extract('placeholder', $vars);
-			$config['placeholder'] = $placeholder ?: elgg_echo('autocomplete:select:placeholder');
+			$placeholder = \elgg_extract('placeholder', $vars);
+			$config['placeholder'] = $placeholder ?: \elgg_echo('autocomplete:select:placeholder');
 		}
 
 		if (!isset($config['minimumResultsForSearch'])) {
