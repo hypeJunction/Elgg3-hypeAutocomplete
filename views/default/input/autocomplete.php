@@ -99,7 +99,7 @@ foreach ($values as $attr) {
 	} else if ($attr instanceof ElggEntity) {
 		$entity = $attr;
 	} else {
-		$entity = get_user_by_username($attr);
+		$entity = elgg_get_user_by_username($attr);
 	}
 
 	if ($entity) {
