@@ -45,7 +45,9 @@ $tags = elgg_get_tags([
 ]);
 
 $value = elgg_extract('value', $vars, '');
-$vars['value'] = string_to_tag_array($value);
+// string_to_tag_array() was removed in Elgg 4; elgg_string_to_array() replaces it
+// and requires a string, so coerce (a tags metadata read can be null or an array).
+$vars['value'] = elgg_string_to_array(is_array($value) ? implode(',', $value) : (string) $value);
 $vars['options'] = $vars['value'];
 
 if (!isset($vars['placeholder'])) {

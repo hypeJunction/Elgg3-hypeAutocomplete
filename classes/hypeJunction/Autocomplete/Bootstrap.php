@@ -15,7 +15,10 @@ class Bootstrap extends DefaultPluginBootstrap {
 	public function init(): void {
 		elgg_extend_view('elements/forms.css', 'autocomplete/stylesheet.css');
 
-		elgg_register_esm('select2', elgg_get_simplecache_url('select2/js/select2.full.min.js'));
+		// bower-asset/select2 needed asset-packagist, which no longer serves this
+		// project. The bundle is vendored; register it by absolute URL, the same way
+		// elgg_tokeninput registers its vendored jQuery plugin.
+		elgg_register_esm('select2', elgg_normalize_url('mod/hypeautocomplete/vendors/select2/js/select2.full.min.js'));
 
 		elgg_extend_view('input/select', 'autocomplete/select');
 

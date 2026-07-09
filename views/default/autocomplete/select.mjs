@@ -1,9 +1,19 @@
-import elgg from 'elgg';
+/**
+ * Autocomplete select ES module (Elgg 7).
+ *
+ * select2 is a classic UMD jQuery plugin: with no AMD `define` and no CommonJS
+ * `module`, its factory falls through to the GLOBAL jQuery. On Elgg 7 jQuery is
+ * an ES module, so expose window.jQuery first and only THEN load select2 — a
+ * static `import 'select2'` is hoisted above this file's body and would run
+ * against an undefined global.
+ */
 import Ajax from 'elgg/Ajax';
 import $ from 'jquery';
 import i18n from 'elgg/i18n';
-import { trigger } from 'elgg/events';
-import 'select2';
+import hooks from 'elgg/hooks';
+
+window.$ = window.jQuery = $;
+await import('select2');
 
 var autocomplete = {
 	format: function(state, text) {
@@ -63,7 +73,7 @@ var autocomplete = {
 
 		opts.ajax = autocomplete.prepareAjaxParams($elem, opts);
 
-		opts = trigger('options', 'select', {
+		opts = hooks.trigger('options', 'select', {
 			$elem: $elem
 		}, opts);
 

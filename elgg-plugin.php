@@ -26,7 +26,7 @@ return [
 
 	'views' => [
 		'default' => [
-			'select2/' => "$path/vendor/bower-asset/select2/dist/",
+			'select2/' => "$path/vendors/select2/",
 		],
 	],
 	'routes' => [
