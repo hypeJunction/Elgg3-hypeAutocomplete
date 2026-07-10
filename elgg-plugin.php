@@ -26,7 +26,11 @@ return [
 
 	'views' => [
 		'default' => [
-			'select2/' => "$path/vendors/select2/",
+			// NOT $path: that heuristic points at the Elgg root when composer installs
+			// this plugin (no plugin-local vendor/autoload.php), which resolved the alias
+			// to /var/www/html/vendors/select2/ and made Elgg log a RecursiveDirectoryIterator
+			// failure at boot. The vendored bundle always lives beside this file.
+			'select2/' => "$plugin_root/vendors/select2/",
 		],
 	],
 	'routes' => [
